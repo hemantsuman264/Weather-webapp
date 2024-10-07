@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <form action="/" method="post" class="search-box">
+        <input name="city" id="city" type="text" placeholder="Search Cities here" formaction="/city">
+        <input name="country" id="country" type="text" placeholder="Enter Country Name">
+        <button class="btn" type="submit"><img class="search-img" height="18px" width="18px" src="images/Search-btn.png" alt=""></button>    
+    </form>
+
+    <div class="big-container">
+    <div class="container1">
+
+        <% if(locals.city&&locals.region&&locals.ctry&&locals.temp&&locals.desc&&locals.img_day){ %>
+            <div class="data">
+                <div class="city-temp">
+                    <div class="city">
+                        <h2><%= city %></h2>
+                        <p style="font-size: 16px; font-family: sans-serif;">
+                            <%= region %>, <%= ctry %></p>
+                    </div>
+                    <div class="temp">
+                        <h1><%= temp %><sup>°C</sup></h1>
+                    </div>
+                </div>
+    
+                <div class="weather-img">
+                    <img height="120px" width="120px" class="cloudy-img" src=<%= img_day %> alt="">
+                    <p ><%= desc %></p>
+                </div>
+            </div>
+        <% } %>
+
+    </div>
+
+    <div class="day-forecast">  <!-- container-2 -->    <!-- container-2 -->  <!-- container-2 -->
+        <div cont2-label>          <!-- container-2 label -->
+            <div label-forecast>
+                <h4>TODAY'S  FORECAST</h4>
+            </div> 
+        </div>
+        <!-- container2 inside data images time temp -->
+        <% if(locals.hour) { %>
+            <% hour.forEach((item)=>{ %>
+        <div class="cont2-data">
+                    <div class="inside-blocks">
+                        <div>
+                            <p><%= item.time.slice(11,16) %> AM</p>
+                        </div>
+                        <div>
+                            <img height="50px" width="50px" src=<%= item.condition.icon %> alt="">
+                        </div>
+                        <div>
+                            <p style="font-size: 20px; color: white;"><%= item.temp_c %><sup>°C</sup></p>
+                        </div>
+                    </div>
+                </div>
+           <% })  %>
+    <% } %>
+    </div>
+
+  
+
+    <div class="air-data">         <!-- container-3 -->   <!-- container-3 -->  <!-- container-3 -->
+        <div class="air-label">
+            <div class="air-text">
+                <h3>AIR CONDITIONS</h3>
+            </div>
+            <div class="button-more">
+                <button class="more-btn">See more</button>
+            </div>
+        </div>
+
+        <% if(locals.real_feel && locals.wind &&
+        locals.sunset && locals.sunrise && locals.rain_chance
+        && locals.uv) { %>
+
+        <div class="mini-cont">
+            <div class="inside-data">
+                <div class="heading">
+                    <img src="" alt="">
+                    <p>REAL FEEL</p>
+                </div>
+                <div>
+                    <p style="font-size: 25px;">
+                       <%= real_feel %> <sup style="font-size: 18px;">°C</sup></p>
+                </div>
+            </div>
+
+            <div class="inside-data">
+                <div class="heading">
+                    <img src="" alt="">
+                    <p>WIND</p>
+                </div>
+                <div>
+                    <p style="font-size: 25px;"><%= wind %> Km/h</p>
+                </div>
+            </div>
+
+            <div class="inside-data">
+                <div class="heading">
+                    <img src="" alt="">
+                    <p>SUNRISE</p>
+                </div>
+                <div>
+                    <p style="font-size: 25px;"><%= sunrise %></p>
+                </div>
+            </div>
+
+            <div class="inside-data">
+                <div class="heading">
+                    <img src="" alt="">
+                    <p>UV INDEX</p>
+                </div>
+                <div>
+                    <p style="font-size: 25px;"><%= uv %></p>
+                </div>
+            </div>
+
+            <div class="inside-data">
+                <div class="heading">
+                    <img src="" alt="">
+                    <p>CHANCE OF RAIN</p>
+                </div>
+                <div>
+                    <p style="font-size: 25px;"><%= rain_chance %> %</p>
+                </div>
+            </div>
+            
+            <div class="inside-data">
+                <div class="heading">
+                    <img src="" alt="">
+                    <p>SUNSET</p>
+                </div>
+                <div>
+                    <p style="font-size: 25px;"><%= sunset %></p>
+                </div>
+            </div>            
+
+        </div>
+        <% } %>
+    </div>
+
+</div>
+<footer></footer>
+</body>
+</html>
