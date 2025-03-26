@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="/path-to-your-favicon/favicon.ico">
+
 </head>
 <body>
 
@@ -77,9 +79,9 @@
             </div>
         </div>
 
-        <% if(locals.real_feel && locals.wind &&
-        locals.sunset && locals.sunrise && locals.rain_chance
-        && locals.uv) { %>
+        <% if(locals.real_feel || locals.wind ||
+        locals.sunset || locals.sunrise || locals.rain_chance
+        || locals.uv) { %>
 
         <div class="mini-cont">
             <div class="inside-data">

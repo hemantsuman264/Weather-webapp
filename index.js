@@ -8,7 +8,7 @@ const app = express();
 const port = 3000;
 app.use(cors());
 
-app.use(express.static("Public"));
+app.use(express.static('public'));
 
 app.set('view engine','ejs');
 
@@ -68,6 +68,6 @@ app.post("/",async(req,res) => {
 
 });
 
-app.listen(port,() => {
+app.listen(port, async () => {
     console.log(`Listening on Port ${port}`);
 });
